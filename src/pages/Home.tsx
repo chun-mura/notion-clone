@@ -11,7 +11,8 @@ function Home() {
   const noteStore = useNoteStore();
 
   const createNote = async () => {
-    const newNote = await noteRepository.create(currentUser!.id, { title });
+    const params = title === '' ? {} : { title };
+    const newNote = await noteRepository.create(currentUser!.id, params);
     noteStore.set([newNote]);
     setTitle('');
   };
