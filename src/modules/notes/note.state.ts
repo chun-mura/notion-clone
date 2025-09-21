@@ -38,10 +38,13 @@ export const useNoteStore = () => {
     return notes.find((note) => note.id == id);
   };
 
+  const clear = () => setNotes([]);
+
   return {
     getAll: () => notes,
     getOne,
     set,
     delete: deleteNote,
+    clear,
   };
 };
