@@ -18,7 +18,6 @@ const Layout = () => {
   const fetchNotes = async () => {
     setIsLoading(true);
     const notes = await noteRepository.find(currentUser!.id);
-    console.log(notes);
     if (notes == null) return;
     noteStore.set(notes);
     setIsLoading(false);
