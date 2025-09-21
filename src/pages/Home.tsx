@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus } from 'lucide-react';
 
-export function Home() {
+function Home() {
   return (
     <Card className="border-0 shadow-none w-1/2 m-auto">
       <CardHeader className="px-4 pb-3">
@@ -24,4 +24,6 @@ export function Home() {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default Home;

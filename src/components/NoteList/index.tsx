@@ -19,9 +19,9 @@ export function NoteList({ layer = 0, parentId }: NoteListProps) {
       >
         ページがありません
       </p>
-      {notes.map((note) => {
+      {notes.map((note, index) => {
         return (
-          <div key={note.id}>
+          <div key={note.id || index}>
             <NoteItem layer={layer} />
           </div>
         );

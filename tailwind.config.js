@@ -1,9 +1,6 @@
-import react from '@vitejs/plugin-react';
-
+/** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ['class'],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  plugins: [require('tailwindcss-animate')],
   theme: {
     extend: {
       colors: {
@@ -55,4 +52,5 @@ export default {
       },
     },
   },
+  plugins: [],
 };
