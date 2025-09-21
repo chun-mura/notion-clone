@@ -18,6 +18,22 @@ export const useNoteStore = () => {
     });
   };
 
+  const deleteNote = (id: number) => {
+    const findChildrenIds = (parentId: number): number[] => {
+      const childrenIds = notes
+        .filter((note) => note.parent_document == parentId)
+        .map((child) => child.id);
+      return childrenIds.concat(
+        ...childrenIds.map((childId) => findChildrenIds(childId))
+      );
+    };
+
+    const childrenIds = findChildrenIds(id);
+    setNotes((oldNotes) =>
+      oldNotes.filter((note) => ![...childrenIds, id].includes(note.id))
+    );
+  };
+
   const getOne = (id: number) => {
     return notes.find((note) => note.id == id);
   };
@@ -26,5 +42,6 @@ export const useNoteStore = () => {
     getAll: () => notes,
     getOne,
     set,
+    delete: deleteNote,
   };
 };
