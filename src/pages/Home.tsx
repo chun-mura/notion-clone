@@ -4,8 +4,10 @@ import { noteRepository } from '@/modules/notes/note.repository';
 import { useNoteStore } from '@/modules/notes/note.state';
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const { currentUser } = useCurrentUserStore();
   const noteStore = useNoteStore();
@@ -15,6 +17,7 @@ function Home() {
     const newNote = await noteRepository.create(currentUser!.id, params);
     noteStore.set([newNote]);
     setTitle('');
+    navigate(`/notes/${newNote.id}`);
   };
 
   return (
